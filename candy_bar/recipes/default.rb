@@ -6,6 +6,6 @@
 #
 # All rights reserved - Do Not Redistribute
 
-file "/tmp/banzai"
+file "/tmp/banzai" do
   content search(:aws_opsworks_volumes, "mount_point:/vol/ebi")
 end
