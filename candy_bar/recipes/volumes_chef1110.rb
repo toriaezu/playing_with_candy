@@ -1,8 +1,9 @@
 
 require "pp"
 
-current_node = search(:aws_opsworks_instance, "self:true").first
-layer_id = current_node["layer_ids"].first
-volume_configurations = search(:aws_opsworks_layer, "layer_id:#{layer_id}").first["volume_configurations"]
+searched_volumes = search(:node, "mount_point:/vol/ebi").first
 
-pp volume_configurations
+puts "volumes:"
+pp searched_volumes
+puts "=================================================================="
+pp node["ebs"]["devices"]
