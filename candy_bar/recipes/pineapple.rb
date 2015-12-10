@@ -16,8 +16,11 @@ def beer_on_a_stick
   Chef::Log.info "hostname is #{hostname}"
   Chef::Log.info "ohai.. node['fqdn'] #{node['fqdn']} node['hostname'] #{node['hostname']}"
   search_string = "hostname:`hostname`"
+  ohai_string = "hostname:#{node['fqdn']}"
+  Chef::Log.info "search string #{search_string}"
+  Chef::Log.info "ohai string #{ohai_string}"
   instance = search("aws_opsworks_instance", search_string).first
-  instance2 = search("aws_opsworks_instance", node['hostname']).first
+  instance2 = search("aws_opsworks_instance", ohai_string).first
 
   
   Chef::Log.info "beer on a stick returns #{instance.inspect}"
